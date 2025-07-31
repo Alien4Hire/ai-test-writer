@@ -1,0 +1,8 @@
+generate_tests_task:
+  description: >
+    For each JS/TS file in the given folder or single file, generate tests if not already tested.
+    Ensure each test file uses the naming convention `[name].test.[ext]`.
+    Use GPT to chunk large files and retry failed tests up to 5 times using error context.
+  expected_output: >
+    A new test file written next to the source file. Track completed tests in `tested_files.json`.
+  agent: writer_agent

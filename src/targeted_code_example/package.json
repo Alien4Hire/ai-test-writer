@@ -1,0 +1,14 @@
+{
+  "name": "targeted_code_example",
+  "version": "1.0.0",
+  "description": "example code to test",
+  "main": "example.js",
+  "scripts": {
+    "test": "jest --ci"
+  },
+  "author": "Jason Maynard",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^30.0.5"
+  }
+}

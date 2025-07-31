@@ -1,0 +1,32 @@
+[project]
+name = "ai-test-writer"
+version = "0.1.0"
+description = "Agentic AI pipeline to automate test writing"
+authors = [{ name = "Jason Maynard", email = "jaymaynard84@gmail.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.108.0,<1.0.0",
+    "openai>=1.0.0",
+    "google-generativeai>=0.4.1",
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.0",
+    "rich>=13.7.0",
+    "tenacity>=8.2.3"
+]
+
+[project.scripts]
+run = "test_writer.main:run"
+run_crew = "test_writer.main:run"
+
+[tool.crewai]
+type = "crew"
+
+[tool.uv]
+package = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/test_writer"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
