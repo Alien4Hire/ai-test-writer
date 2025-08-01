@@ -9,13 +9,12 @@ def load_tested_files():
         return json.loads(TRACK_FILE.read_text())
     return []
 
-# Save tested files
 def save_tested_files(tested_files):
     TRACK_FILE.write_text(json.dumps(tested_files, indent=2))
 
-# Add file to tested list
-def mark_as_tested(file_path):
+def mark_as_tested(entry):
     tested = load_tested_files()
-    if file_path not in tested:
-        tested.append(file_path)
+    if not any(f["path"] == entry["path"] for f in tested):
+        tested.append(entry)
         save_tested_files(tested)
+

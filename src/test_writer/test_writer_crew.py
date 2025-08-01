@@ -71,21 +71,11 @@ class TestWriterCrew():
             print(f"📄 Test file written to: {test_path}")
 
             print("🧪 Running test suite...")
-            if test_command:
-                result = subprocess.run(
-                    test_command,
-                    shell=True,
-                    capture_output=True,
-                    text=True
-                )
-                status = result.returncode
-                err = result.stderr
-            else:
-                status, _, err = run_tests()
+            status, _, err = run_tests(path)
 
             if status == 0:
                 print(f"✅ All tests passed for {path}")
-                mark_as_tested(path)
+                mark_as_tested({"path": path, "status": "passed"})
                 return
             else:
                 print(f"❌ Test failed for {path} [Attempt {retries + 1}/5]")
@@ -95,6 +85,7 @@ class TestWriterCrew():
                 retries += 1
 
         print(f"⚠️ Gave up on {path} after 5 retries.")
+        mark_as_tested({"path": path, "status": "failed"})
 
     def run_file(self, file_path: str, test_command: str | None = None):
         print(f"\n🔍 Running test writer on single file: {file_path}")
