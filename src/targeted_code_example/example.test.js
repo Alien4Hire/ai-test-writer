@@ -1,24 +1,33 @@
-const { add } = require('./example');
+const { add, subtract, multiply, divide } = require('./example');
 
-describe('add', () => {
-  it('should return the sum of two positive numbers', () => {
+describe('Math functions', () => {
+  test('add function should return the sum of two numbers', () => {
     expect(add(1, 2)).toBe(3);
-  });
-
-  it('should return the sum of two negative numbers', () => {
     expect(add(-1, -2)).toBe(-3);
+    expect(add(-1, 1)).toBe(0);
   });
 
-  it('should return the sum of a positive and a negative number', () => {
-    expect(add(1, -2)).toBe(-1);
+  test('subtract function should return the difference of two numbers', () => {
+    expect(subtract(5, 3)).toBe(2);
+    expect(subtract(3, 5)).toBe(-2);
+    expect(subtract(-5, -3)).toBe(-2);
   });
 
-  it('should return the sum when one of the numbers is zero', () => {
-    expect(add(0, 5)).toBe(5);
-    expect(add(5, 0)).toBe(5);
+  test('multiply function should return the product of two numbers', () => {
+    expect(multiply(2, 3)).toBe(6);
+    expect(multiply(-2, 3)).toBe(-6);
+    expect(multiply(-2, -3)).toBe(6);
   });
 
-  it('should return zero when both numbers are zero', () => {
-    expect(add(0, 0)).toBe(0);
+  test('divide function should return the quotient of two numbers', () => {
+    expect(divide(6, 3)).toBe(2);
+    expect(divide(6, -3)).toBe(-2);
+    expect(divide(-6, -3)).toBe(2);
+  });
+
+  test('divide function should handle division by zero', () => {
+    expect(divide(6, 0)).toBe(Infinity);
+    expect(divide(-6, 0)).toBe(-Infinity);
+    expect(divide(0, 0)).toBeNaN();
   });
 });

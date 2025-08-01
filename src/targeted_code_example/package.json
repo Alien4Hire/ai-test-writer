@@ -4,7 +4,8 @@
   "description": "example code to test",
   "main": "example.js",
   "scripts": {
-    "test": "jest --ci"
+    "test": "jest --ci --no-cache",
+    "coverage": "jest --no-cache --coverage --coverageReporters=json"
   },
   "author": "Jason Maynard",
   "license": "ISC",
